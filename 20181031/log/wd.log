@@ -1,0 +1,12 @@
+2018-11-01 20:37:15,873 myCat [WARN] [testMylogger.cc-test3-38] this is warn msg 
+2018-11-01 20:37:15,875 myCat [INFO] [testMylogger.cc-test3-39] this is info msg
+2018-11-01 20:37:15,875 myCat [ERROR] [testMylogger.cc-test3-40] this is error msg
+2018-11-01 20:37:15,875 myCat [DEBUG] [testMylogger.cc-test3-41] this is debug msg
+2018-11-01 20:37:23,660 myCat [WARN] [testMylogger.cc-test3-38] this is warn msg 
+2018-11-01 20:37:23,662 myCat [INFO] [testMylogger.cc-test3-39] this is info msg
+2018-11-01 20:37:23,662 myCat [ERROR] [testMylogger.cc-test3-40] this is error msg
+2018-11-01 20:37:23,662 myCat [DEBUG] [testMylogger.cc-test3-41] this is debug msg
+2018-11-01 20:37:49,987 myCat [WARN] [testMylogger.cc-test3-38] this is warn msg 
+2018-11-01 20:37:49,987 myCat [INFO] [testMylogger.cc-test3-39] this is info msg
+2018-11-01 20:37:49,987 myCat [ERROR] [testMylogger.cc-test3-40] this is error msg
+2018-11-01 20:37:49,987 myCat [DEBUG] [testMylogger.cc-test3-41] this is debug msg
