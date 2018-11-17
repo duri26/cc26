@@ -33,9 +33,41 @@ void test0()
 	cout<<endl;
 }
 
+string int2str(int number)
+{
+	ostringstream oss;
+	oss<<number;
+	return oss.str();
+}
+
+void readConfig(const string & file)
+{
+	ifstream ifs(file);
+	if(!ifs)
+	{
+		cout<<"ifstream create error"<<endl;
+		return ;
+	}
+
+	string key, value;
+	string line;
+	while(getline(ifs,line))
+	{
+		istringstream iss(line);
+		iss>>key>>value;
+		cout<<key<<"---->"<<value<<endl;
+	}
+	ifs.close();
+}
+
+
 int main(void )
 	{
 		test0();
+cout<<int2str(1024)<<endl;
+cout<<std::to_string(1024)<<endl<<endl;
+
+readConfig("server.conf");
 
 
 		return 0;
