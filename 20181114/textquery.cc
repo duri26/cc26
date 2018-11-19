@@ -1,8 +1,8 @@
- ///
- /// @file    textquery.cc
- /// @author  duri(1197010670@qq.com)
- /// @date    2018-11-15 23:45:00
- ///
+///
+// @file    textquery.cc
+/// @author  duri(1197010670@qq.com)
+/// @date    2018-11-15 23:45:00
+///
 
 #include <string.h>
 
@@ -59,42 +59,42 @@ void TextQuery::strProcess(string & str)
 
 TextQuery::TextQuery(ifstream & is)
 	:content(new vector<string>)
-	 {
-		 string line,word;
-		 int count = 0;
+{
+	string line,word;
+	int count = 0;
 
-		 while(getline(is,line))
-		 {
-			 content->push_back(line);
+	while(getline(is,line))
+	{
+		content->push_back(line);
 
-			 strProcess(line);
-			 istringstream iss(line);
+		strProcess(line);
+		istringstream iss(line);
 
-			 while(iss >> word)
-			 {
-				 auto & tmp =wm[word];
-				 if(!tmp)
-				 {
-					 tmp.reset(new pair<int ,set<int>>());
+		while(iss >> word)
+		{
+			auto & tmp =wm[word];
+			if(!tmp)
+			{
+				tmp.reset(new pair<int ,set<int>>());
 
-				 }
-				 ++tmp->first;
-				 tmp->second.insert(count);
-			 }
-			 ++count;
-		 }
-	 }
+			}
+			++tmp->first;
+			tmp->second.insert(count);
+		}
+		++count;
+	}
+}
 
 
 class QueryResult
 {
 	public:
-		QueryResult(string s, shared_ptr<vector<string>> p,
-				shared_ptr<pair<int, set<int>>> 1)
+		QueryResult(string s, shared_ptr<vector<string>> p,shared_ptr<pair<int, set<int>>> l)
 			:sought(s)
 			 ,content(p)
-			 ,lines(1)
-		{}
+			 ,lines(l)
+	{
+	}
 
 		friend std::ostream & operator<<(std::ostream & ,const QueryResult &);
 
@@ -107,35 +107,58 @@ class QueryResult
 
 QueryResult TextQuery::query(const string & word) const
 {
-static shared_ptr<pair<int ,set<int>>> nodata(new pair<int,set<int>>());
+	static shared_ptr<pair<int ,set<int>>> nodata(new pair<int,set<int>>());
 
-auto it = wm.find(word);
-if(it != wm.end())
-{
-	return QueryResult(word,content,nodata);
-}
-else
-{
-	return QueryResult(word, content,it->sencond);
-}
-}
-
-std::ostream & operator <<(std::ostream & os,const QueryResult & qu)
-{
-	int count = qu.lines->first;
-	os<<qu.sought<<" occurs "<<(count>1?"times":"time")<<endl;
-
-	if(count > 0)
+	auto it = wm.find(word);
+	//if(it != wm.end()) 写错
+	if(it == wm.end())
 	{
-		auto it = qu.lines->second.begin();
-	
-	while(it != qu.lines->sencond.begin())
+		return QueryResult(word,content,nodata);
+	}
+	else
 	{
-		os<<"("<<*it <<")"<<*(qu.content-begin()+*it)<<endl;
-		++it;
+		return QueryResult(word, content,it->second);
 	}
 }
-return os;
+
+std::ostream & operator<<(std::ostream & os, const QueryResult & qr)
+{
+	int times = qr.lines->first;
+	os << qr.sought << " occurs " << times
+		<< (times > 1 ? " times" : " time") << endl;
+
+	if (times > 0)
+	{
+		auto it = qr.lines->second.begin();
+
+		while (it != qr.lines->second.end())
+		{
+			os << "(" << *it <<") " 
+				<<*(qr.content->begin() + *it) << endl;
+			++it;
+		}
+	}
+
+	return os;
 }
 
+int main(void)
+{
+	ifstream in("china_daily.txt");
+	if(!in)
+	{
+		cout<<"file open failed"<<endl;
+		return 0;
+	}
 
+	TextQuery tq(in);
+	string word;
+	while(cin>> word)
+	{
+		QueryResult ret(tq.query(word));
+		cout<<ret;
+	}
+
+	in.close();
+	return 0;
+}
