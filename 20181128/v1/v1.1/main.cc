@@ -1,5 +1,6 @@
 
-#include "dictionary_shared_ptr.h"
+#include "dictionary1.1.h"
+
 
 #include <ctime>
 #include <iostream>
@@ -15,7 +16,7 @@ int main(void)
 	start = clock();
 	Dictionary dict;
 
-	string inputfilename("china_daily.txt"),outputfilename("dictionary.txt");
+	string inputfilename("english.txt"),outputfilename("dictionary.txt");
 
 	dict.read(inputfilename);
 	dict.store(outputfilename);

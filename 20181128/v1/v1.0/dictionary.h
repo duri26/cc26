@@ -22,7 +22,6 @@ class Dictionary
 		void read(const string &);
 		void store(const string &);
 	private:
-		void  to_lower(string &);
 		size_t find_first_alp(const string,size_t);
 		size_t find_first_not_alp(const string,size_t);
 

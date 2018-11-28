@@ -20,20 +20,6 @@ using std::ostringstream;
 namespace wd
 {
 
-void  Dictionary::to_lower(string & word)
-{
-	for(auto c: word)
-	{
-		if(!isalpha(c))
-		{
-			c = ' ';
-		}
-		else 
-		{
-			tolower(c);
-		}
-	}
-}
 
 void Dictionary::insert(const string & word)
 {
@@ -106,7 +92,11 @@ void Dictionary::read(const string & filename)
 			}
 
 			word = string(line,beg,end - beg);
-			Dictionary::to_lower(word);
+			for(auto &c:word)
+			{
+				c =tolower(c);
+			}
+			
 			insert(word);
 		}
 		}	
