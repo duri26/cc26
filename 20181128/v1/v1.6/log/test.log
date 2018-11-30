@@ -14,3 +14,11 @@
 2018-11-30 11:51:03,044 mylog [INFO] [Configuration.cc-init-56] open config file "../conf/dict.conf" success
 2018-11-30 11:51:03,045 mylog [INFO] [DictProducer.cc-buildEnDict-74] build dict.dat success
 2018-11-30 11:51:03,045 mylog [INFO] [DictProducer.cc-buildIndex-128] create index.dat success
+2018-11-30 11:58:26,682 mylog [INFO] [Configuration.cc-init-56] open config file "../conf/dict.conf" success
+2018-11-30 11:58:26,682 mylog [INFO] [DictProducer.cc-buildEnDict-74] build dict.dat success
+2018-11-30 11:58:26,682 mylog [INFO] [DictProducer.cc-buildIndex-128] create index.dat success
+2018-11-30 15:15:33,870 mylog [INFO] [Configuration.cc-init-56] open config file "../conf/dict.conf" success
+2018-11-30 15:15:33,875 mylog [DEBUG] [DictProducer.cc-getFiles-101] add "/home/duri/cc26/20181128/v1/v1.6/data/dictionary/en/file" to dictionary files
+2018-11-30 15:15:33,875 mylog [INFO] [DictProducer.cc-buildEnDict-55] open dictionary file "/home/duri/cc26/20181128/v1/v1.6/data/dictionary/en/file" success
+2018-11-30 15:15:33,875 mylog [INFO] [DictProducer.cc-buildEnDict-74] build dict.dat success
+2018-11-30 15:15:33,875 mylog [INFO] [DictProducer.cc-buildIndex-128] create index.dat success
