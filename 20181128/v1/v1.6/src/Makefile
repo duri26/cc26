@@ -1,6 +1,6 @@
 INC_DIR:= ./
 SRC_DIR:= ./
-SRCS:=$(wildcard ./*.cc)  # 必须添加./ 
+SRCS:=$(wildcard *.cc)  # 必须添加./??? 
 OBJS:=$(patsubst %.cc,  %.o ,$(SRCS))
 LIBS:= -llog4cpp -lpthread
 
@@ -12,9 +12,9 @@ EXE:=./test.exe
 
 $(EXE):$(OBJS)
 	$(CXX) -o $(EXE) $(OBJS) $(CXXFLAGS)
+	rm -rf $(OBJS)	
 
 clean:
-	rm -rf $(OBJS)	
 	rm -rf $(EXE)
 
 
