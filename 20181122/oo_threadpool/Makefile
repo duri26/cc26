@@ -12,7 +12,7 @@ EXE:= ./a.out.exe
 
 $(EXE):$(OBJS)
 	$(CXX) -o $(EXE) $(OBJS) $(CXXFLAGS)
-	rm -rf $(OBJS)
 
 clean:
 	rm -rf $(EXE)
+	rm -rf $(OBJS)

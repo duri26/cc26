@@ -1,7 +1,7 @@
 INC_DIR:= ./
 SRC_DIR:= ./
-SRCS:=$(wildcard *.cc)
-OBJS:=$(patsubst %.cc ,%.o ,$(SRCS))
+SRCS:=$(wildcard ./*.cc)// 添加的./ 
+OBJS:=$(patsubst %.cc,  %.o ,$(SRCS))
 LIBS:= -llog4cpp -lpthread
 
 CXX:= g++
@@ -12,7 +12,9 @@ EXE:=./test.exe
 
 $(EXE):$(OBJS)
 	$(CXX) -o $(EXE) $(OBJS) $(CXXFLAGS)
-	rm -rf $(OBJS)
-clean;
+
+clean:
+	rm -rf $(OBJS)	
 	rm -rf $(EXE)
+
 

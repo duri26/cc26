@@ -1,7 +1,7 @@
 INC_DIR:= ./
 SRC_DIR:= ./
-SRCS:=$(wildcard *.cpp)
-OBJS:= $(patsubst %.cpp, %.o, $(SRCS))
+SRCS:=$(wildcard *.cc)
+OBJS:= $(patsubst %.cc, %.o, $(SRCS))
 LIBS:= -lpthread
 
 CXX:=g++
@@ -12,7 +12,7 @@ EXE:=./server.exe
 
 $(EXE):$(OBJS)
 	$(CXX) -o $(EXE) $(OBJS) $(CXXFLAGS)
-	rm -rf $(OBJS)
 
 clean:
 	rm -rf $(EXE)
+	rm -rf $(OBJS)
