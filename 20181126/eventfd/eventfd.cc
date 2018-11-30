@@ -18,7 +18,7 @@ using std::endl;
 
 using namespace wd;
 
-Eventfd::Eventfd(EventCallback && cb)
+Eventfd::Eventfd(EventfdCallback && cb)
 	:_cb(std::move(cb))
 	 ,_fd(createEventfd())
 	 ,_isStarted(false)
@@ -36,7 +36,7 @@ void Eventfd::start()
 	_isStarted = true;
 	
 	struct pollfd pfd;
-	pfd.fd =fd;
+	pfd.fd =_fd;
 	pfd.events = POLLIN;
 
 	while(_isStarted)
