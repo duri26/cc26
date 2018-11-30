@@ -2,3 +2,15 @@
 2018-11-30 10:42:20,577 mylog [INFO] [Configuration.cc-init-56] open config file "../conf/dict.conf" success
 2018-11-30 10:42:20,577 mylog [INFO] [DictProducer.cc-buildEnDict-74] build dict.dat success
 2018-11-30 10:42:20,577 mylog [INFO] [DictProducer.cc-buildIndex-128] create index.dat success
+2018-11-30 11:48:19,395 mylog [INFO] [Configuration.cc-init-56] open config file "../conf/dict.conf" success
+2018-11-30 11:48:19,396 mylog [INFO] [DictProducer.cc-buildEnDict-74] build dict.dat success
+2018-11-30 11:48:19,397 mylog [INFO] [DictProducer.cc-buildIndex-128] create index.dat success
+2018-11-30 11:49:53,607 mylog [INFO] [Configuration.cc-init-56] open config file "../conf/dict.conf" success
+2018-11-30 11:49:53,613 mylog [INFO] [DictProducer.cc-buildEnDict-74] build dict.dat success
+2018-11-30 11:49:53,613 mylog [INFO] [DictProducer.cc-buildIndex-128] create index.dat success
+2018-11-30 11:49:56,762 mylog [INFO] [Configuration.cc-init-56] open config file "../conf/dict.conf" success
+2018-11-30 11:49:56,762 mylog [INFO] [DictProducer.cc-buildEnDict-74] build dict.dat success
+2018-11-30 11:49:56,762 mylog [INFO] [DictProducer.cc-buildIndex-128] create index.dat success
+2018-11-30 11:51:03,044 mylog [INFO] [Configuration.cc-init-56] open config file "../conf/dict.conf" success
+2018-11-30 11:51:03,045 mylog [INFO] [DictProducer.cc-buildEnDict-74] build dict.dat success
+2018-11-30 11:51:03,045 mylog [INFO] [DictProducer.cc-buildIndex-128] create index.dat success
