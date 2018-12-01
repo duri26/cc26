@@ -9,7 +9,7 @@
 
 #include "noncopyable.h"
 #include "tcpconnection.h"
-
+#include "mutexlock.h"
 #include <sys/epoll.h>
 #include <vector>
 #include <map>
@@ -32,7 +32,9 @@ class EpollPoller
 
 		void loop();
 		void unloop();
+		void runInLoop(Functor && cb);
 		void doPendingFunctors();
+		void wakeup();
 
 		void setConnectionCallback(EpollCallback cb);
 		void setMessageCallback(EpollCallback cb);
@@ -42,12 +44,17 @@ class EpollPoller
 		void waitEpollfd();
 		void handleConnection();
 		void handleMessage(int peerfd);
+		void handleRead();
 
 	private:
 		Acceptor & _acceptor;
 		int _epollfd;
+		int _eventfd;
 		int _listenfd;
 		bool _isLooping;
+
+		MutexLock _mutex;
+		std::vector<Functor> _pendingFunctors;
 
 		using EventList = std::vector<struct epoll_event> ;
 		EventList _eventsList;

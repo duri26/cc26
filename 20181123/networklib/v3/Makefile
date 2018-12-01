@@ -1,6 +1,6 @@
 lNC_DIR:= ./
 SRC_DIR:= ./
-SRCS:=$(wildcard *.cc)
+SRCS:=$(wildcard *.cc, *.cpp)
 OBJS:=$(patsubst %.cc ,%.o, $(SRCS))
 
 LIBS:= -lpthread
