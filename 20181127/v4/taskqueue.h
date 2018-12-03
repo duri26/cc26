@@ -11,7 +11,7 @@
 #include "condition.h"
 
 #include <queue>
-#include <funcional>
+#include <functional>
 
 namespace wd
 {

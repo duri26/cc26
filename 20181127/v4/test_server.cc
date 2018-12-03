@@ -1,47 +1,96 @@
-#include "tcpserver.h" 
+ ///
+ /// @file    test_server.cc
+ /// @author  duri(1197010670@qq.com)
+ /// @date    2018-12-03 11:30:12
+ ///
+
+#include "tcpserver.h"
+#include "threadpool.h"
+
 #include <iostream>
 
 using std::cout;
 using std::endl;
 
-using namespace wd;
-
-
-void onConnection(const TcpConnectionPtr &conn)
+class Task
 {
-	cout << conn->toString() <<  " has connected!" << endl;
-    conn->send("hello, welcome to Chat Server.\r\n");
+
+public:
+	Task(const string & query,const wd::TcpConnectionPtr & conn)
+	:_queury(query)
+	 ,_conn(conn)
+	{}
+
+	void process()
+	{
+		cout<<">>> task is process "<< endl;
+
+		_conn->sendInLoop(_queury);
+	}
+
+private:
+	string _queury;
+	wd::TcpConnectionPtr _conn;
+};
+
+wd::Threadpool * g_threadpool = NULL;
+
+void onConnection(const wd::TcpConnectionPtr && conn)
+{
+	cout<<conn->toString() <<endl;
+	conn->send("hello, welcome to server.\r\n");
 }
 
-void onMessage(const TcpConnectionPtr &conn)
+//运行IO线程
+void onMessage(const wd::TcpConnectionPtr & conn)
 {
-    string s(conn->receive());
-	cout << ">> server receive: " << s << endl;
-	//decode 
-	//compute
-	//encode
-
-	//Task task(s);
-	//threadpool.addTask(task);
+	std::string s(conn->receive());
 	
-    conn->send(s);
+	//conn->send(s);//数据回显
+	
+
+#if 1
+	Task task(s,conn);
+	//在IO线程中，将任务的执行交给线程池处理
+	g_threadpool->addTask(std::bind(&Task::process,task));
+	cout<<" >>> add task to threadpool "<<endl;
+
+#endif
 }
 
-void onClose(const TcpConnectionPtr &conn)
+void onClose(const wd::TcpConnectionPtr & conn)
 {
-    printf("%s close\n", conn->toString().c_str());
+	printf("%s close \n",conn->toString().c_str());
 }
 
-int main(int argc, char const **argv)
+//组合设计模式
+#if 0
+class SearchEngineServer
 {
-	//wd::TcpServer tcpserver("192.168.80.128", 9999);
-	TcpServer tcpserver("0.0.0.0", 9999);
-//	wd::TcpServer tcpserver("127.0.0.1", 9999);
+public:
+	onConnection(const wd::TcpConnectionPtr & conn);
+	onMessage(const wd::TcpConnectionPtr & conn);
+	onClose(const wd::TcpConnectionPtr & conn);
+private:
+	Threadpool _threadpool;//进行计算
+	TcpServer _server;//网络通信
+	TextQuery _tq;//业务逻辑
+}
+#endif
+
+int main(int argc,char const **argv)
+{
+	wd::Threadpool threadpool(4,10);
+	g_threadpool = &threadpool;
+	threadpool.start();
+
+	wd::TcpServer tcpserver("0.0.0.0",6666);
 	tcpserver.setConnectionCallback(&onConnection);
 	tcpserver.setMessageCallback(&onMessage);
 	tcpserver.setCloseCallback(&onClose);
 
 	tcpserver.start();
 
-    return 0;
+	return 0;
 }
+
