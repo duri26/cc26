@@ -37,15 +37,13 @@ void TcpServer::stop()
 }
 
 
-erver::setConnectionCallback(TcpServerCallback cb)
-{	connectionCallback_ = cb;	}
+void TcpServer::setConnectionCallback(TcpServerCallback cb)
+{	_connectionCallback = cb;	}
 void TcpServer::setMessageCallback(TcpServerCallback cb)
-{	messageCallback_ = cb;	}
+{	_messageCallback = cb;	}
 void TcpServer::setCloseCallback(TcpServerCallback cb)
-{	closeCallback_ = cb;	}
+{	_closeCallback = cb;	}
 
 }//end of namespace wd
 
-using std::cout;
-using std::endl;
 

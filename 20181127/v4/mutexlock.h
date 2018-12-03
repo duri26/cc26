@@ -47,6 +47,8 @@ class MutexLock
 		pthread_mutex_t _mutex;
 };
 
+
+//RAII
 class MutexLockGuard
 {
 	public:
