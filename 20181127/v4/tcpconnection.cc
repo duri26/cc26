@@ -18,7 +18,8 @@ TcpConnection::TcpConnection(int sockfd,EpollPoller * loop)
 	 ,_sockIO(sockfd)
 	 ,_localAddr(wd::Socket::getLocalAddr(sockfd))
      ,_peerAddr(wd::Socket::getPeerAddr(sockfd))
-	 ,_isShutdwonWrite(false)
+	 ,_isShutdownWrite(false)
+
 	 ,_loop(loop)
 	{
 		_sockfd.nonblock();
@@ -26,9 +27,9 @@ TcpConnection::TcpConnection(int sockfd,EpollPoller * loop)
 
 TcpConnection::~TcpConnection()
 {
-	if(!_isShutdwonWrite)
+	if(!_isShutdownWrite)
 	{
-		_isShutdwonWrite = true;
+		_isShutdownWrite = true;
 		shutdown();
 	}
 	printf("~TcpConnection()\n");
@@ -37,7 +38,7 @@ TcpConnection::~TcpConnection()
 std::string TcpConnection::receive()
 {
 	char buf[65536];
-	memset(buf,sizeof(buf));
+	memset(buf,0,sizeof(buf));
 	//int len = readInt32();
 	//readn(buf,len);
     size_t ret =_sockIO.readline(buf,sizeof(buf));
@@ -56,9 +57,9 @@ void TcpConnection::send(const std::string & msg)
 
 void TcpConnection::shutdown()
 {
-	if(!_isShutdwonWrite)
+	if(!_isShutdownWrite)
 		_sockfd.shutdownWrite();
-	_isShutdwonWrite = true;
+	_isShutdownWrite = true;
 }
 
 std::string TcpConnection::toString()

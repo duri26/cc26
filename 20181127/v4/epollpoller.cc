@@ -144,7 +144,7 @@ void EpollPoller::handleMessage(int peerfd)
 {
 	bool isClosed = isConnectionClosed(peerfd);
 	ConnectionMap::iterator it = _connMap.find(peerfd);
-	assert(it != connMap_.end());
+	assert(it != _connMap.end());
 
 	if(isClosed)
 	{
