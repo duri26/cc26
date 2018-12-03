@@ -30,11 +30,11 @@ int main(int argc,char **argv)
 	struct sockaddr_in addr;
 	memset(&addr,0,sizeof(addr));
 	addr.sin_family =AF_INET;
-//addr.sin_addr.s_addr = inet_addr("192.168.80.128"); //localhost
-addr.sin_addr.s_addr = inet_addr("127.0.0.1"); //localhost
+addr.sin_addr.s_addr = inet_addr("192.168.80.128"); //localhost
+//addr.sin_addr.s_addr = inet_addr("127.0.0.1"); //localhost
 //addr.sin_addr.s_addr = inet_addr("0.0.0.0"); //localhost
 //	addr.sin_addr.s_addr = (INADDR_ANY);  //为什么用不/客户端不可使用INADDR_ANY:
-	addr.sin_port=htons(9999);
+	addr.sin_port=htons(6666);
 //	addr.sin_port=htons(0);
 	socklen_t len =sizeof addr;
 	if(connect(peerfd, (struct sockaddr*)&addr,len) == -1)

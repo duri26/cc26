@@ -1,10 +1,10 @@
-#include "tcpserver.h" 
-#include "threadpool.h"
 
+#include "TcpServer.h"
+#include "Threadpool.h"
 #include <iostream>
-
 using std::cout;
 using std::endl;
+
 
 class Task
 {
@@ -73,7 +73,7 @@ private:
 }
 #endif
 
-int main(int argc, char const **argv)
+int main(int argc, char const *argv[])
 {
 	wd::Threadpool threadpool(4, 10);
 	g_threadpool = &threadpool;
@@ -88,4 +88,3 @@ int main(int argc, char const **argv)
 
     return 0;
 }
-
