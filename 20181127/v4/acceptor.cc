@@ -1,7 +1,7 @@
  ///
  /// @file    acceptor.cc
  /// @author  duri(1197010670@qq.com)
- /// @date    2018-12-03 14:56:34
+ /// @date    2018-12-03 11:16:10
  ///
 
 #include "acceptor.h"
@@ -98,5 +98,6 @@ void Acceptor::listen()
 	}
 }
 
-}//end of namespace wd
+}
+
 
