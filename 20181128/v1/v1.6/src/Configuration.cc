@@ -48,21 +48,21 @@ void Configuration::init(const string & file)
 
 	if(!input)
 	{
-		LogError("open config file \"%s\" failed",file.c_str());
+		LogError("  Open config file \"%s\" failed",file.c_str());
 		exit(EXIT_FAILURE);
 	}
 	else 
 	{
-		LogInfo("open config file \"%s\" success", file.c_str());
+		LogInfo("  Open config file \"%s\" success", file.c_str());
 	}
 
     string line;
 	std::vector <string> vec;
 	while(getline(input,line))
 	{
-		boost::split(vec,line,boost::is_any_of(" \t,: ")
-				,boost::token_compress_on);
-     _conf.emplace(vec[0],vec[1]);
+		boost::split(vec,line,boost::is_any_of(" \t,: ")//分词，is_any_of(" \t,: ") 分词的关键"空格，tab,:,
+				,boost::token_compress_on); //   token_compress_on防止将两个, ,其中一个放在单词里；
+     _conf.emplace(vec[0],vec[1]);// 类似insert
 	}
 
 	input.close();
