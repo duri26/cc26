@@ -12,7 +12,8 @@
 
 namespace wd
 {
-
+class CacheManager
+{
 	public:
 		static void initCache(size_t);
 		static Cache & getCache(size_t);
