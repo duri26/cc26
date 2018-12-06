@@ -100,9 +100,6 @@ void Dictionary::initIndex(const string & path)
 		}
 	}
 	input.close();
-	}
-}
-input.close();
 }
 
 }
