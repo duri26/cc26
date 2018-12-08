@@ -17,13 +17,16 @@ namespace dict
 
 
 //配置文件类，单例对象
-class Configuration{
+class Configuration
+{
 	public:
 		static Configuration * getInstance();
-		string getConfig(const string & word) const{
+		string getConfig(const string & word) const
+		{
 			auto cit = _conf.find(word);
-			if (cit == _conf.end()){
-				return string();
+			if (cit == _conf.end())
+			{
+				return string(); //什么意思
 			}
 			
 			return cit->second; 
