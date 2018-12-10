@@ -25,7 +25,7 @@ using namespace std;
 
 void do_service(int );
 
-int main(argc,const char ** argv)
+int main(int argc,const char ** argv)
 {
 	int peerfd = socket(PF_INET,SOCK_STREAM,0);
 	if(peerfd == -1)
