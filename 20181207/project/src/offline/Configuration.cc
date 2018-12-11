@@ -25,7 +25,7 @@ Configuration::Configuration(const string & file)
 
 Configuration * Configuration::getInstance()
 {
-	if(_pInstance)
+	if(!_pInstance)
 {		_pInstance =new Configuration("../conf/dict.conf");
 	atexit(destroy);
 }
