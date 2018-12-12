@@ -55,7 +55,7 @@ class TcpConnection
 		const InetAddr _localAddr;
 		const InetAddr _peerAddr;
 
-		TcpConnectionCallBack _onConnetionCb;
+		TcpConnectionCallBack _onConnectionCb;
 		TcpConnectionCallBack _onMessageCb;
 		TcpConnectionCallBack _onCloseCb;
 		

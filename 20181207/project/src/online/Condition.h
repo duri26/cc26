@@ -32,6 +32,11 @@ class Condition
 
 		void wait()
 		{
+			pthread_cond_wait(&_cond,_mutex.getMutexPtr());
+		}
+		
+		void notify()
+		{
 			pthread_cond_signal(&_cond);
 		}
 
