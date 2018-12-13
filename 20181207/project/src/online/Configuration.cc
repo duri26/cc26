@@ -60,10 +60,11 @@ namespace mysp
 		std::vector<string> vec;
 		while (getline(input, line))
 		{
+			if (!line.size()) //用来跳过空行
+				continue;
 			boost::split(vec, line, boost::is_any_of(" \t,:"), boost::token_compress_on);
 			_conf.emplace(vec[0], vec[1]);
 		}
-
 		input.close();
 	}
 

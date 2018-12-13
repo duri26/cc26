@@ -1,0 +1,22 @@
+{
+   "all" : {
+      "ha\b\b" : [ "hand", "hath", "hast", "half", "hair", "hard" ],
+      "hehe" : [ "heh", "hege", "thee", "head", "hear", "help" ],
+      "heheheh" : [ "helene", "heathen", "hepher", "heweth", "heather", "heeded" ],
+      "ks" : [ "s", "k", "vs", "ku", "es", "os" ],
+      "la" : [ "la", "law", "lay", "ll", "lo", "lad" ],
+      "nihe" : [ "nice", "nile", "time", "life", "wife", "night" ],
+      "y\b" : [ "ye", "y", "yes", "yea", "eye", "rye" ],
+      "卷" : [ "卷", "上卷", "卷入", "卷首", "下卷", "二卷" ],
+      "哈" : [
+         "哈德",
+         "哈佛",
+         "哈尔斯",
+         "哈福兹",
+         "哈菲兹",
+         "哈特曼"
+      ],
+      "将" : [ "即将", "必将", "将会", "将士", "上将", "主将" ],
+      "将军" : [ "将军", "将会", "将士", "将入", "将其", "将荐" ]
+   }
+}

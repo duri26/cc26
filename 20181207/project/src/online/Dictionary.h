@@ -43,7 +43,7 @@ class Dictionary
 	std::unordered_map<std::string,std::set<int>> _indexTable;
 
 	static AutoRelease _ar;
-	static Dictionary * pInstance;
+	static Dictionary * _pInstance;
 };
 
 #define getDict() Dictionary::getInstance()->getDict()
